@@ -1,0 +1,21 @@
+body { background-color: #ffffff !important; }
+
+canvas { 
+    border: 1px solid #cccccc;;
+    cursor: pointer;
+    padding:1px;
+    box-shadow: 2px 2px 2px #cccccc;
+}
+
+.magnifier {
+    padding:1px!important;
+    cursor: default!important;
+}
+
+#sampleBar {
+    border-bottom:20px solid silver;
+    width:150px!important;
+}
+
+.RowMarginTop { margin-top: 30px; }
+.RowMarginBottom { margin-bottom: 20px; }
