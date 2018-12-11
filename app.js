@@ -1,3 +1,5 @@
+var environment = "http://localhost/Image.Inspector";
+
 // Canvas
 var canvas;
 var canvasContext;
@@ -64,7 +66,7 @@ function countLoadedImagesAndLaunchIfReady() {
 function beginLoadingImage(imgVar, fileName) {
     
     imgVar.onload = countLoadedImagesAndLaunchIfReady;
-    imgVar.src = 'http://localhost/Image.Magnifier/assets/' + fileName;
+    imgVar.src = environment + '/assets/' + fileName;
 }
 
 
@@ -100,18 +102,18 @@ function mouseMoved(evt) {
 function sampleImageDataAtCoords(x, y) {
     
     var canvasPadding = 1;
-    var magnifierSize = 150;
-    var magnifierX = x - canvasPadding - (magnifierSize / 2);
-    var magnifierY = y - canvasPadding - (magnifierSize / 2);
+    var inspectorSize = 150;
+    var inspectorX = x - canvasPadding - (inspectorSize / 2);
+    var inspectorY = y - canvasPadding - (inspectorSize / 2);
 
-    // Grab image to display on magnifier window
-    var magnifier = canvasContext.getImageData(magnifierX,magnifierY, magnifierSize,magnifierSize);
+    // Grab image to display on inspector window
+    var inspector = canvasContext.getImageData(inspectorX,inspectorY, inspectorSize,inspectorSize);
     
     canvasContext2.scale(2.0,2.0);
-    canvasContext2.putImageData(magnifier, 0, 0);
+    canvasContext2.putImageData(inspector, 0, 0);
 
     // Grab sample for RGB test
-    var imageSample = canvasContext.getImageData(x-canvasPadding,y-canvasPadding, magnifierSize,magnifierSize);
+    var imageSample = canvasContext.getImageData(x-canvasPadding,y-canvasPadding, inspectorSize,inspectorSize);
     
     // Output data to screen.
     document.getElementById("sampleCoords").innerHTML = ("X: " + x + ", Y: " + y);
