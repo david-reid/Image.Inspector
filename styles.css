@@ -13,9 +13,21 @@ canvas {
 }
 
 #sampleBar {
-    border-bottom:20px solid silver;
     width:150px!important;
+}
+
+.ColorBar {
+    margin-top:5px;
+    margin-bottom:0px;
+    height:0px;
+    border-bottom:20px solid silver;
+}
+
+.HexRgb {
+    margin-top:0px;
+    margin-bottom:5px;
 }
 
 .RowMarginTop { margin-top: 30px; }
 .RowMarginBottom { margin-bottom: 20px; }
+

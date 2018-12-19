@@ -126,4 +126,16 @@ function sampleImageDataAtCoords(x, y) {
     // Display color under mouse
     var cssText = "border-bottom:20px solid " + "rgb(" + imageSample.data[0] + "," + imageSample.data[1] + "," + imageSample.data[2] + ")";
     document.getElementById("sampleBar").style.cssText = cssText;
+
+    var hexText = rgbToHex(imageSample.data[0], imageSample.data[1], imageSample.data[2]);
+    document.getElementById("hexText").innerHTML = "HEX: " + hexText.toLocaleUpperCase();
+}
+
+function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
 }
