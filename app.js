@@ -19,8 +19,11 @@ var gallery = [
 ];
 
 
+
 // Initiate the canvas and load the images
 window.onload = function() {
+
+    checkProtocol();
 
     // Image canvas
     canvas = document.getElementById('canvas');
@@ -36,6 +39,17 @@ window.onload = function() {
 }
 
 
+// Redirect if using the file: protocol.
+function checkProtocol() {
+    
+    var protocol = document.location.protocol;
+    
+    if ( protocol === "file:" ) {
+        window.location.href = "whoops.html";
+    }
+}
+
+
 function loadImages() {
 
     picsToLoad = gallery.length;
@@ -48,19 +62,19 @@ function loadImages() {
 }
 
 
+function beginLoadingImage(imgVar, fileName) {
+    
+    imgVar.onload = countLoadedImagesAndLaunchIfReady;
+    imgVar.src = environment + '/assets/' + fileName;
+}
+
+
 function countLoadedImagesAndLaunchIfReady() {
     
     picsToLoad--;
     if (picsToLoad == 0) {
         imageLoadingDone();
     }
-}
-
-
-function beginLoadingImage(imgVar, fileName) {
-    
-    imgVar.onload = countLoadedImagesAndLaunchIfReady;
-    imgVar.src = environment + '/assets/' + fileName;
 }
 
 
