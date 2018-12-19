@@ -12,27 +12,21 @@ var mouseY;
 var mapPics = [];
 var picsToLoad = 0;
 
-var background = document.createElement('img');
-var elbows = document.createElement('img');
-var hands = document.createElement('img');
-var lowerArms = document.createElement('img');
-var shoulders = document.createElement('img');
-var upperArms = document.createElement('img');
-var wrists = document.createElement('img');
+var lion = document.createElement('img');
 
 var gallery = [
-    { image: background, theFile: 'lion_400x400.jpg', xpos: 0, ypos: 0, description: 'A colourful lion' },
+    { image: lion, theFile: 'lion_400x400.jpg', xpos: 0, ypos: 0, description: 'A colourful lion' },
 ];
 
 
 // Initiate the canvas and load the images
 window.onload = function() {
 
-    console.log("IMAGE HIGHLIGHTER");
-
+    // Image canvas
     canvas = document.getElementById('canvas');
     canvasContext = canvas.getContext('2d');
 
+    // Inspector canvas
     canvas2 = document.getElementById('canvas2');
     canvasContext2 = canvas2.getContext('2d');
 
@@ -72,14 +66,10 @@ function beginLoadingImage(imgVar, fileName) {
 
 function imageLoadingDone() {
 
-    console.log('A total of ' + gallery.length + ' Image(s) Loaded');
-
     for (var i = 0; i < gallery.length; i++ ) {
 
         if (gallery[i].image != undefined) {
 
-            console.log(gallery[i].description);
-            
             canvasContext.drawImage(gallery[i].image, gallery[i].xpos, gallery[i].ypos);
         }
     }
@@ -119,7 +109,7 @@ function sampleImageDataAtCoords(x, y) {
     document.getElementById("sampleCoords").innerHTML = ("X: " + x + ", Y: " + y);
     document.getElementById("sampleColour").innerHTML = ("R: " + imageSample.data[0] + ", G: " + imageSample.data[1] + ", B: " + imageSample.data[2]);
 
+    // Display color under mouse
     var cssText = "border-bottom:20px solid " + "rgb(" + imageSample.data[0] + "," + imageSample.data[1] + "," + imageSample.data[2] + ")";
     document.getElementById("sampleBar").style.cssText = cssText;
-
 }
